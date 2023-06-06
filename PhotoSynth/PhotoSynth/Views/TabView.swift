@@ -17,21 +17,21 @@ struct TabNavigationView: View {
                 .background(settings.theme.backgroundColor)
                 .foregroundColor(settings.theme.textColor)
                 .tabItem {
-                    Image(systemName: "point.3.connected.trianglepath.dotted")
+                    Image(systemName: "camera.macro.circle")
                         .foregroundColor(settings.theme.accentColor)
                 }
                 .tag(Tabs.discover.rawValue)
-            Text("Journal")
+            Text("Log")
                 .background(settings.theme.backgroundColor)
                 .foregroundColor(settings.theme.textColor)
                 .tabItem {
-                    Image(systemName: "point.3.connected.trianglepath.dotted")
+                    Image(systemName: "backpack.fill")
                         .foregroundColor(settings.theme.accentColor)
                 }
-                .tag(Tabs.journal.rawValue)
+                .tag(Tabs.log.rawValue)
             SettingsView()
                 .tabItem {
-                    Image(systemName: "point.3.connected.trianglepath.dotted")
+                    Image(systemName: "gearshape")
                         .foregroundColor(settings.theme.accentColor)
                 }
                 .tag(Tabs.settings.rawValue)
@@ -42,7 +42,7 @@ struct TabNavigationView: View {
     /// Tabs
     private enum Tabs: Int {
         case discover = 0
-        case journal
+        case log
         case settings
     }
 }
