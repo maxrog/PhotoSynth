@@ -9,6 +9,7 @@
  Things TODO
  • https://web.plant.id/plant-identification-api/ (DNF has network layer)
  
+ • Swift 5.9 / macros simplified swiftUI property Wrappers? Only @State @Environment @Binding ??? Look into this!
  
  • Widget
  • SF Symbol Animation
