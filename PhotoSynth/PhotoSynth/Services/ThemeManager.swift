@@ -10,16 +10,17 @@ import Combine
 import SwiftUI
 
 /*
- TODO instead of just light or dark mode, user should be able to fine comb colors (accent)
- Can just have a color palette below these settings to change the main accent color
- 
 TODO test system preference + changing back and forth
- // TODO should / can this use AppStorage?
  */
-
 
 /// Manager for the user's app/color theme preference
 class ThemeManager: ObservableObject {
+    
+    let userDefaults = UserDefaults.standard
+    
+    init() {
+        self.accentColor = userDefaults.object(forKey: ThemeUserDefaults.accentColorKey) as? Color ?? .green
+    }
     
     // MARK: Preferences
     
@@ -28,18 +29,18 @@ class ThemeManager: ObservableObject {
     
     /// Whether user has opted to use something other than system settings
     var shouldOverrideSystemSetting: Bool {
-        get { UserDefaults.standard.bool(forKey:ThemeUserDefaults.overrideSystemKey) }
+        get { userDefaults.bool(forKey:ThemeUserDefaults.overrideSystemKey) }
         set {
-            UserDefaults.standard.set(newValue, forKey:ThemeUserDefaults.overrideSystemKey)
+            userDefaults.set(newValue, forKey:ThemeUserDefaults.overrideSystemKey)
             updateThemeSubject()
         }
     }
     
     /// Whether user has opted for a light or a dark mode
     var shouldApplyDarkMode: Bool {
-        get { UserDefaults.standard.bool(forKey: ThemeUserDefaults.applyDarkModeKey) }
+        get { userDefaults.bool(forKey: ThemeUserDefaults.applyDarkModeKey) }
         set {
-            UserDefaults.standard.set(newValue, forKey: ThemeUserDefaults.applyDarkModeKey)
+            userDefaults.set(newValue, forKey: ThemeUserDefaults.applyDarkModeKey)
             updateThemeSubject()
         }
     }
@@ -55,10 +56,12 @@ class ThemeManager: ObservableObject {
     
     // MARK: Colors
     
+    /// Determines whether system is in dark mode
     private lazy var systemInDarkMode: Bool = {
         UIScreen.main.traitCollection.userInterfaceStyle == .dark
     }()
     
+    /// Theme text color (if overriding system settings)
     var textColor: Color {
         switch preferredStyle {
         case .dark:
@@ -70,6 +73,7 @@ class ThemeManager: ObservableObject {
         }
     }
     
+    /// Theme background color (if overriding system settings)
     var backgroundColor: Color {
         switch preferredStyle {
         case .dark:
@@ -81,9 +85,11 @@ class ThemeManager: ObservableObject {
         }
     }
     
-    // TODO
-    var accentColor: Color {
-        return Color.green
+    /// Theme accent color
+    @Published var accentColor: Color = .green {
+        didSet {
+            userDefaults.setColor(accentColor, forKey: ThemeUserDefaults.accentColorKey)
+        }
     }
     
 }
@@ -97,4 +103,6 @@ enum PreferredUserInterfaceStyle {
 private struct ThemeUserDefaults {
     static let overrideSystemKey = "rogers.max.photosynth.themeoverridesystemsettingkey"
     static let applyDarkModeKey = "rogers.max.photosynth.applydarkmodekey"
+    
+    static let accentColorKey = "rogers.max.themeaccentcolor"
 }

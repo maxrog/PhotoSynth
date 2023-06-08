@@ -10,8 +10,8 @@ import SwiftUI
 /// A settings view for various app settings / user preferences
 struct SettingsView: View {
     
-    @EnvironmentObject var settingsViewModel: SettingsViewModel
-    
+    @EnvironmentObject var theme: ThemeManager
+
     var body: some View {
         NavigationStack {
             Form {
@@ -22,11 +22,8 @@ struct SettingsView: View {
                 }
                 .headerProminence(.increased)
                 Section {
-                    HStack {
-                        Text("TODO Toggles")
-                    }
-                    HStack {
-                        Text("TODO Toggles")
+                    ColorPicker(selection: $theme.accentColor, supportsOpacity: false) {
+                        Text("Accent Color")
                     }
                 } header: {
                     Text("Theme")
@@ -34,6 +31,10 @@ struct SettingsView: View {
                     Text("Go ahead and theme your app!")
                 }
                 .headerProminence(.increased)
+                
+                Button("Accent") {
+                    theme.accentColor = .red
+                }
             }
             .navigationTitle("Settings")
         }

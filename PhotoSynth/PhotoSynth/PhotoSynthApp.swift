@@ -26,9 +26,12 @@ struct PhotoSynthApp: App {
     
     @Environment(\.scenePhase) var scenePhase
     
+    @StateObject var theme = ThemeManager()
+    
     var body: some Scene {
         WindowGroup {
             TabNavigationView()
+                .environmentObject(theme)
         }.onChange(of: scenePhase) { newScenePhase in
             switch scenePhase {
             case .active:
