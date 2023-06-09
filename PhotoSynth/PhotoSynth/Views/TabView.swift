@@ -33,7 +33,9 @@ struct TabNavigationView: View {
                     Image(systemName: "gearshape")
                 }
                 .tag(Tabs.settings.rawValue)
-        }.accentColor(theme.accentColor)
+        }
+        .background(theme.backgroundColor)
+        .accentColor(theme.accentColor)
     }
 }
 

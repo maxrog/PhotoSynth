@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @EnvironmentObject var theme: ThemeManager
-
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -22,19 +22,24 @@ struct SettingsView: View {
                 }
                 .headerProminence(.increased)
                 Section {
+                    if !theme.useSystemSetting {
+                        Toggle(isOn: $theme.applyDarkMode) {
+                            Text("Dark Mode")
+                        }
+                    }
+                    Toggle(isOn: $theme.useSystemSetting.animation()) {
+                        Text("Use Device Settings")
+                    }
                     ColorPicker(selection: $theme.accentColor, supportsOpacity: false) {
-                        Text("Accent Color")
+                        Text("Tint")
                     }
                 } header: {
                     Text("Theme")
                 } footer: {
-                    Text("Go ahead and theme your app!")
+                    Image(systemName: "paintpalette.fill")
+                        .foregroundColor(theme.accentColor)
                 }
                 .headerProminence(.increased)
-                
-                Button("Accent") {
-                    theme.accentColor = .red
-                }
             }
             .navigationTitle("Settings")
         }

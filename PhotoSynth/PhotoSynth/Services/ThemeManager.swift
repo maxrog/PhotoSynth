@@ -11,6 +11,7 @@ import SwiftUI
 
 /*
 TODO test system preference + changing back and forth
+ TODO dynamic text (Use System Text Size / slider for text size (if not use system text size)
  */
 
 /// Manager for the user's app/color theme preference
@@ -28,16 +29,16 @@ class ThemeManager: ObservableObject {
     @Published private(set) var preferredStyle: PreferredUserInterfaceStyle = .system
     
     /// Whether user has opted to use something other than system settings
-    var shouldOverrideSystemSetting: Bool {
-        get { userDefaults.bool(forKey:ThemeUserDefaults.overrideSystemKey) }
+    var useSystemSetting: Bool {
+        get { userDefaults.bool(forKey: ThemeUserDefaults.overrideSystemKey) }
         set {
-            userDefaults.set(newValue, forKey:ThemeUserDefaults.overrideSystemKey)
+            userDefaults.set(newValue, forKey: ThemeUserDefaults.overrideSystemKey)
             updateThemeSubject()
         }
     }
     
     /// Whether user has opted for a light or a dark mode
-    var shouldApplyDarkMode: Bool {
+    var applyDarkMode: Bool {
         get { userDefaults.bool(forKey: ThemeUserDefaults.applyDarkModeKey) }
         set {
             userDefaults.set(newValue, forKey: ThemeUserDefaults.applyDarkModeKey)
@@ -47,10 +48,11 @@ class ThemeManager: ObservableObject {
     
     /// Update the current value subject when settings change
     private func updateThemeSubject() {
-        if shouldOverrideSystemSetting {
-            preferredStyle = shouldApplyDarkMode ? .dark : .light
-        } else {
+        if useSystemSetting {
+            userDefaults.set(systemInDarkMode, forKey: ThemeUserDefaults.applyDarkModeKey)
             preferredStyle = .system
+        } else {
+            preferredStyle = applyDarkMode ? .dark : .light
         }
     }
     
@@ -69,7 +71,7 @@ class ThemeManager: ObservableObject {
         case .light:
             return Color.black
         case .system:
-            return systemInDarkMode ? Color.white : Color.black
+            return Color(.label)
         }
     }
     
@@ -81,7 +83,7 @@ class ThemeManager: ObservableObject {
         case .light:
             return Color.white
         case .system:
-            return systemInDarkMode ? Color.black : Color.white
+            return Color(.systemBackground)
         }
     }
     
