@@ -15,15 +15,11 @@ struct TabNavigationView: View {
     var body: some View {
         TabView(selection: $tabs.selectedTabIndex) {
             Text("Discover")
-                .background(theme.backgroundColor)
-                .foregroundColor(theme.textColor)
                 .tabItem {
                     Image(systemName: "camera.macro.circle")
                 }
                 .tag(Tabs.discover.rawValue)
             Text("Log")
-                .background(theme.backgroundColor)
-                .foregroundColor(theme.textColor)
                 .tabItem {
                     Image(systemName: "backpack.fill")
                 }
@@ -34,7 +30,6 @@ struct TabNavigationView: View {
                 }
                 .tag(Tabs.settings.rawValue)
         }
-        .background(theme.backgroundColor)
         .accentColor(theme.accentColor)
     }
 }

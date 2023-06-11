@@ -26,12 +26,24 @@ struct PhotoSynthApp: App {
     
     @Environment(\.scenePhase) var scenePhase
     
-    @StateObject var theme = ThemeManager()
-    
+    @StateObject var theme: ThemeManager = ThemeManager()
+   
     var body: some Scene {
         WindowGroup {
-            TabNavigationView()
-                .environmentObject(theme)
+            switch theme.preferredStyle {
+            case .dark:
+                TabNavigationView()
+                    .environmentObject(theme)
+                    .preferredColorScheme(.dark)
+            case .light:
+                TabNavigationView()
+                    .environmentObject(theme)
+                    .preferredColorScheme(.light)
+            case .system:
+                TabNavigationView()
+                    .environmentObject(theme)
+                    .preferredColorScheme(.none)
+            }
         }.onChange(of: scenePhase) { newScenePhase in
             switch scenePhase {
             case .active:

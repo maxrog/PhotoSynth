@@ -17,6 +17,7 @@
 		AF7805362A2F7A4200910495 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF7805352A2F7A4200910495 /* Preview Assets.xcassets */; };
 		AF7805382A2FD69800910495 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7805372A2FD69800910495 /* SwiftUIExtensions.swift */; };
 		AF78053A2A320C2D00910495 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7805392A320C2D00910495 /* TabViewModel.swift */; };
+		AFCC6C542A35F2BC002B484E /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC6C532A35F2BC002B484E /* UIKitExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		AF7805352A2F7A4200910495 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AF7805372A2FD69800910495 /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		AF7805392A320C2D00910495 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
+		AFCC6C532A35F2BC002B484E /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				AF7805232A2F7A0400910495 /* FoundationExtensions.swift */,
+				AFCC6C532A35F2BC002B484E /* UIKitExtensions.swift */,
 				AF7805372A2FD69800910495 /* SwiftUIExtensions.swift */,
 			);
 			path = Extensions;
@@ -221,6 +224,7 @@
 			files = (
 				AF7805312A2F7A0400910495 /* SettingsView.swift in Sources */,
 				AF78050E2A2F79AB00910495 /* PhotoSynthApp.swift in Sources */,
+				AFCC6C542A35F2BC002B484E /* UIKitExtensions.swift in Sources */,
 				AF78052E2A2F7A0400910495 /* Logger.swift in Sources */,
 				AF7805302A2F7A0400910495 /* TabView.swift in Sources */,
 				AF78052F2A2F7A0400910495 /* FoundationExtensions.swift in Sources */,

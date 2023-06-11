@@ -6,20 +6,34 @@
 //
 
 import Foundation
-import Combine
 import SwiftUI
 
 /*
 TODO test system preference + changing back and forth
  TODO dynamic text (Use System Text Size / slider for text size (if not use system text size)
+ TODO app icon switcher
+ 
  */
 
 /// Manager for the user's app/color theme preference
 class ThemeManager: ObservableObject {
     
+    
+    /// Standard user defaults
     let userDefaults = UserDefaults.standard
     
     init() {
+        setupTheme()
+    }
+    
+    /// Configuration for launch
+    private func setupTheme() {
+        // First launch with no value
+        if userDefaults.value(forKey: ThemeUserDefaults.applySystemKey) == nil {
+            useSystemSetting = true
+        } else {
+            applyDarkMode = useSystemSetting ? systemInDarkMode : userDefaults.bool(forKey: ThemeUserDefaults.applyDarkModeKey)
+        }
         self.accentColor = userDefaults.object(forKey: ThemeUserDefaults.accentColorKey) as? Color ?? .green
     }
     
@@ -30,9 +44,9 @@ class ThemeManager: ObservableObject {
     
     /// Whether user has opted to use something other than system settings
     var useSystemSetting: Bool {
-        get { userDefaults.bool(forKey: ThemeUserDefaults.overrideSystemKey) }
+        get { userDefaults.bool(forKey: ThemeUserDefaults.applySystemKey) }
         set {
-            userDefaults.set(newValue, forKey: ThemeUserDefaults.overrideSystemKey)
+            userDefaults.set(newValue, forKey: ThemeUserDefaults.applySystemKey)
             updateThemeSubject()
         }
     }
@@ -52,6 +66,7 @@ class ThemeManager: ObservableObject {
             userDefaults.set(systemInDarkMode, forKey: ThemeUserDefaults.applyDarkModeKey)
             preferredStyle = .system
         } else {
+            userDefaults.set(false, forKey: ThemeUserDefaults.applySystemKey)
             preferredStyle = applyDarkMode ? .dark : .light
         }
     }
@@ -103,7 +118,7 @@ enum PreferredUserInterfaceStyle {
 
 /// User Default Keys
 private struct ThemeUserDefaults {
-    static let overrideSystemKey = "rogers.max.photosynth.themeoverridesystemsettingkey"
+    static let applySystemKey = "rogers.max.photosynth.applysystemsettingkey"
     static let applyDarkModeKey = "rogers.max.photosynth.applydarkmodekey"
     
     static let accentColorKey = "rogers.max.themeaccentcolor"
