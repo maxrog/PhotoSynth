@@ -8,8 +8,10 @@
 /*
  Things TODO
  • https://web.plant.id/plant-identification-api/ (DNF has network layer)
+ • Apple Weather API to show glimpse of weather / expected rainfall amt for day/week etc
  
  • Swift 5.9 / macros simplified swiftUI property Wrappers? Only @State @Environment @Binding ??? Look into this!
+ • SwiftData for core data alternative for storing plant captures
  
  • Widget
  • SF Symbol Animation
