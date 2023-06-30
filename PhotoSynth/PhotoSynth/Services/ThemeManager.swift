@@ -18,7 +18,6 @@ TODO test system preference + changing back and forth
 /// Manager for the user's app/color theme preference
 class ThemeManager: ObservableObject {
     
-    
     /// Standard user defaults
     let userDefaults = UserDefaults.standard
     
@@ -69,6 +68,7 @@ class ThemeManager: ObservableObject {
             userDefaults.set(false, forKey: ThemeUserDefaults.applySystemKey)
             preferredStyle = applyDarkMode ? .dark : .light
         }
+        Logger.log(.action, "Theme Configured: \(preferredStyle.rawValue)", sender: String(describing: self), verbose: "Theme configured with values: Preferred Style = \(preferredStyle.rawValue), System Setting = \(useSystemSetting), Dark Mode = \(applyDarkMode)")
     }
     
     // MARK: Colors
@@ -112,7 +112,7 @@ class ThemeManager: ObservableObject {
 }
 
 /// User's preferred user interface style
-enum PreferredUserInterfaceStyle {
+enum PreferredUserInterfaceStyle: String {
     case dark, light, system
 }
 

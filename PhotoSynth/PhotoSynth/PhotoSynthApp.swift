@@ -47,14 +47,11 @@ struct PhotoSynthApp: App {
         }.onChange(of: scenePhase) { newScenePhase in
             switch scenePhase {
             case .active:
-                /// application became active
-                break
+                Logger.log(.action, "Scene active", sender: String(describing: self))
             case .background:
-                /// application went to background
-                break
+                Logger.log(.action, "Scene backgrounded", sender: String(describing: self))
             case .inactive:
-                /// application became inactive
-                break
+                Logger.log(.action, "Scene inactive", sender: String(describing: self))
             default:
                 break
             }

@@ -21,20 +21,25 @@ struct Logger {
         guard logLevel != .none else { return }
         switch logType {
         case .error:
-            debugPrint("📕 Error: \(message) \(sender)")
+            print("📕 Error:\(sender) \(message)")
         case .fatal:
-            assertionFailure("📕 FATAL: \(message) \(sender)")
+            print("📕 FATAL:\(sender) - \(message)")
         case .warning:
-            debugPrint("📙 Warning: \(message) \(sender)")
+            print("📙:\(sender) - \(message)")
         case .success:
-            debugPrint("📗 Success: \(message) \(sender)")
+            print("📗:\(sender) - \(message)")
         case .action:
-            debugPrint("📘 Action: \(message) \(sender)")
+            print("📓:\(sender) - \(message)")
         case .cancelled:
-            debugPrint("📓 Cancelled: \(message) \(sender)")
+            print("📘:\(sender) - \(message)")
         }
         if let verbose = verbose, logLevel == .verbose {
-            debugPrint("\(sender) \n \(verbose)")
+            print(
+                """
+                \(sender)
+                \(verbose)
+              """
+            )
         }
     }
     
