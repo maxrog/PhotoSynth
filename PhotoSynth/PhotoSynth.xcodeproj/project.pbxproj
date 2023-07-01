@@ -18,6 +18,9 @@
 		AF7805382A2FD69800910495 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7805372A2FD69800910495 /* SwiftUIExtensions.swift */; };
 		AF78053A2A320C2D00910495 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7805392A320C2D00910495 /* TabViewModel.swift */; };
 		AFCC6C542A35F2BC002B484E /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC6C532A35F2BC002B484E /* UIKitExtensions.swift */; };
+		AFFB04132A4F76C00048FC58 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB04122A4F76C00048FC58 /* DiscoverView.swift */; };
+		AFFB04182A50309A0048FC58 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB04172A50309A0048FC58 /* CameraView.swift */; };
+		AFFB041C2A50AB570048FC58 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB041B2A50AB570048FC58 /* DiscoverViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		AF7805372A2FD69800910495 /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		AF7805392A320C2D00910495 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		AFCC6C532A35F2BC002B484E /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		AFFB04122A4F76C00048FC58 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		AFFB04172A50309A0048FC58 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		AFFB041B2A50AB570048FC58 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,7 @@
 		AF7805262A2F7A0400910495 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				AFFB04112A4F76A40048FC58 /* Discover */,
 				AF7805272A2F7A0400910495 /* Settings */,
 			);
 			path = Screens;
@@ -150,6 +157,16 @@
 				AF7805352A2F7A4200910495 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AFFB04112A4F76A40048FC58 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				AFFB04122A4F76C00048FC58 /* DiscoverView.swift */,
+				AFFB041B2A50AB570048FC58 /* DiscoverViewModel.swift */,
+				AFFB04172A50309A0048FC58 /* CameraView.swift */,
+			);
+			path = Discover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +246,9 @@
 				AF7805302A2F7A0400910495 /* TabView.swift in Sources */,
 				AF78052F2A2F7A0400910495 /* FoundationExtensions.swift in Sources */,
 				AF7805382A2FD69800910495 /* SwiftUIExtensions.swift in Sources */,
+				AFFB04182A50309A0048FC58 /* CameraView.swift in Sources */,
+				AFFB04132A4F76C00048FC58 /* DiscoverView.swift in Sources */,
+				AFFB041C2A50AB570048FC58 /* DiscoverViewModel.swift in Sources */,
 				AF7805332A2F7A0400910495 /* ThemeManager.swift in Sources */,
 				AF78053A2A320C2D00910495 /* TabViewModel.swift in Sources */,
 			);

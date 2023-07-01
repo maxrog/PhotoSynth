@@ -10,11 +10,11 @@ import SwiftUI
 struct TabNavigationView: View {
     
     @EnvironmentObject var theme: ThemeManager
-    @StateObject var tabs = TabViewModel()
+    @StateObject private var viewModel = TabViewModel()
     
     var body: some View {
-        TabView(selection: $tabs.selectedTabIndex) {
-            Text("Discover")
+        TabView(selection: $viewModel.selectedTabIndex) {
+            DiscoverView()
                 .tabItem {
                     Image(systemName: "camera.macro.circle")
                 }
